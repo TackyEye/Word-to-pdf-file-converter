@@ -45,9 +45,22 @@
 
       <div class="home-container">
         <h1 class="home-text">Pdf to Word Converter</h1>
-        <label for="myfile">Select a file:</label>
-<input type="file" id="myfile" name="myfile">
+        <form id="myForm">
+          <input type="file" id="inpFile"><br>
+          <button type="submit">Upload File</button>
+        </form>
       </div>
     </div>
+    <script>
+      const myForm = document.getElementById("myForm");
+      const inpFile=document.getElementById("inpFile");
+
+      myForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const endpoint="upload.php";
+        const formData = new FormData();
+        formData.append("inpFile", inpFile.files[0]);
+      })
+    </script>
   </body>
 </html>
